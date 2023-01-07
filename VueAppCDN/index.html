@@ -13,8 +13,15 @@
     <div id="app">
         <!-- AttributeBinding, shorthand : = v-bind: -->
         <img v-bind:src="image" alt="img">
+        <!-- reactivity -->
         <h1>{{item}}</h1>
         <p>Description: {{desc}}</p>
+        <!-- v-show adds display:none -->
+        <p v-show="onSale">On Sale</p>
+        <!-- conditional rendering -->
+        <p v-if="qty>10">In Stock</p>
+        <p v-else-if="qty>0 && qty<=10">Almost gone</p>
+        <p v-else>Out of Stock</p>
         <br>
         <a :href="repo">RepoLink</a>
     </div>
