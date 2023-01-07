@@ -20,7 +20,8 @@
             <div class="product_desc">
                 <!-- reactivity -->
                 <!-- styles binding -->
-                <h1 :style="styles">{{item}}</h1>
+                <!-- computed properties -->
+                <h1 :style="styles">{{title}}</h1>
                 <p>Description: {{desc}}</p>
 
                 <!-- list rendering -->
@@ -31,10 +32,11 @@
                 
                 <!-- list rendering -->
                 <!-- style binding -->
+                <!-- using index -->
                 <div 
-                    v-for="fruit in fruits" 
+                    v-for="(fruit, index) in fruits" 
                     :key="fruit.id" 
-                    @mouseover="selectItem(fruit.name)"
+                    @mouseover="selectItem(index)"
                     class="itemColor"
                     :style = "{ backgroundColor: fruit.color}"
                 >
@@ -42,7 +44,8 @@
                 </div>
 
                 <!-- v-show adds display:none -->
-                <p v-show="onSale">On Sale</p>
+                <!-- computed properties -->
+                <p v-show="onSale">{{sale}}</p>
                 <!-- conditional rendering -->
                 <p v-if="qty>10">In Stock</p>
                 <p v-else-if="qty>0 && qty<=10">Almost gone</p>
@@ -65,6 +68,7 @@
 
     <script src="./main.js"></script>
     <script>
+        const mountedApp = app.mount('#app')
         mountedApp.item = 'apple'
 
     </script>

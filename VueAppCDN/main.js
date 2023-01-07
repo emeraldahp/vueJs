@@ -29,6 +29,16 @@ const app = Vue.createApp({
             
         }
     },
+    computed:{
+        title(){
+            return "Fruit: " + this.item
+        },
+        sale(){
+            return "Fruit: " + this.item + " is on Sale."
+        }
+
+    },
+
     methods: {
         addToCart(fruitName) {
             this.cart+=1;
@@ -50,20 +60,14 @@ const app = Vue.createApp({
                 });
             }
         },
-        selectItem(fruitName){
-            this.fruits.forEach(fruit => {
-                if(fruit.name == fruitName)
-                {
-                    this.item = fruit.name;
-                    this.image = fruit.image;
-                    this.infos[1] = fruit.color;
-                    this.qty = fruit.qty;
-                }
-            });
+        selectItem(index){
+            this.item = this.fruits[index].name;
+            this.image = this.fruits[index].image;
+            this.infos[1] = this.fruits[index].color;
+            this.qty = this.fruits[index].qty;
         }
 
 
     }
 })
 
-const mountedApp = app.mount('#app')
