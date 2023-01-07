@@ -66,8 +66,8 @@ app.component('fruits-display',{
             ],
 
             fruits: [
-                {id: 0101, name: 'apple', qty:20, image: "./res/apple.jpg", color: "red"},
-                {id: 0102, name: 'orange', qty: 10, image: "./res/orange.jpg", color: "orange"}
+                {id: 98, name: 'apple', qty:20, image: "./res/apple.jpg", color: "red"},
+                {id: 99, name: 'orange', qty: 10, image: "./res/orange.jpg", color: "orange"}
             ],
             
             onSale: true,
@@ -93,21 +93,27 @@ app.component('fruits-display',{
 
     methods: {
         addToCart(fruitName) {
-            this.$emit('increasecart');
             this.qty-=1;
             this.fruits.forEach(fruit => {
                 if(fruit.name == fruitName){
                     fruit.qty = this.qty
+                    this.$emit('increasecart', fruit.id );
                 }
             });
         },
         removeFromCart(fruitName) {
-            if(this.cart>0){
-                this.$emit('decreasecart');
-                this.qty+=1;
+            if(this.cart.length>0){
+                
+                
                 this.fruits.forEach(fruit => {
                     if(fruit.name == fruitName){
-                        fruit.qty = this.qty
+                        //only increase quantity and attemp to remove the item if its available
+                        if(this.cart.indexOf(fruit.id)>-1){
+                            this.qty+=1;
+                            fruit.qty = this.qty
+                            console.log("incomp")
+                            this.$emit('decreasecart', fruit.id);
+                        }
                     }
                 });
             }

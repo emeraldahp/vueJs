@@ -3,15 +3,24 @@ const app = Vue.createApp({
     //data() is es6 shorthand
     data: function() { 
         return {
-            cart: 0,
+            cart: [],
             premium: true,
             repo: "https://github.com/emeraldahp/vueJs",
         }
     },
     methods: {
-        updateCart(value){
-            this.cart+=value;
+        updateCart(id){
+            this.cart.push(id);
+        },
+        removeInCart(id){
+            //to check if the element exists if so remove it
+            const index = this.cart.indexOf(id)
+            if(index>-1){
+                this.cart.splice(index,1)
+            }
+            console.log(index)
         }
+
     }
 })
 
