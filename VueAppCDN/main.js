@@ -6,9 +6,15 @@ const app = Vue.createApp({
             item: "apple",
             desc: "its a fruit",
             image: "./res/apple.jpg",
-            repo: "https://github.com/emeraldahp/vueJs",
+            infos: ["fresh", "red"],
+            types: [
+                {id:0001, size: 'large'},
+                {id:0002, size: 'small'}
+            ],
+            
             onSale: true,
-            qty: 7
+            qty: 7,
+            repo: "https://github.com/emeraldahp/vueJs",
         }
     }
 })
