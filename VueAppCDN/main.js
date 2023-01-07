@@ -13,23 +13,42 @@ const app = Vue.createApp({
             ],
 
             fruits: [
-                {id: 0101, name: 'apple', qty:50, image: "./res/apple.jpg", color: "red"},
-                {id: 0102, name: 'orange', qty: 20, image: "./res/orange.jpg", color: "orange"}
+                {id: 0101, name: 'apple', qty:20, image: "./res/apple.jpg", color: "red"},
+                {id: 0102, name: 'orange', qty: 10, image: "./res/orange.jpg", color: "orange"}
             ],
             
             onSale: true,
-            qty: 50,
+            qty: 20,
             repo: "https://github.com/emeraldahp/vueJs",
-            cart: 0
+            cart: 0,
+            //styles binding
+            styles: {
+                color: 'blue'
+            }
+            
+            
         }
     },
     methods: {
         addToCart(fruitName) {
             this.cart+=1;
+            this.qty-=1;
+            this.fruits.forEach(fruit => {
+                if(fruit.name == fruitName){
+                    fruit.qty = this.qty
+                }
+            });
         },
         removeFromCart(fruitName) {
-            if(this.cart>0)
+            if(this.cart>0){
                 this.cart-=1;
+                this.qty+=1;
+                this.fruits.forEach(fruit => {
+                    if(fruit.name == fruitName){
+                        fruit.qty = this.qty
+                    }
+                });
+            }
         },
         selectItem(fruitName){
             this.fruits.forEach(fruit => {

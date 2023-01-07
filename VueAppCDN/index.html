@@ -19,7 +19,8 @@
 
             <div class="product_desc">
                 <!-- reactivity -->
-                <h1>{{item}}</h1>
+                <!-- styles binding -->
+                <h1 :style="styles">{{item}}</h1>
                 <p>Description: {{desc}}</p>
 
                 <!-- list rendering -->
@@ -27,19 +28,31 @@
                     <li v-for="info in infos">{{info}}</li>
                 </ul>
                 <div v-for="type in types" :key="type.id">{{type.size}}</div>
-
-                <div v-for="fruit in fruits" :key="fruit.id" @mouseover="selectItem(fruit.name)">{{fruit.name}}</div>
+                
+                <!-- list rendering -->
+                <!-- style binding -->
+                <div 
+                    v-for="fruit in fruits" 
+                    :key="fruit.id" 
+                    @mouseover="selectItem(fruit.name)"
+                    class="itemColor"
+                    :style = "{ backgroundColor: fruit.color}"
+                >
+                        {{fruit.name}}
+                </div>
 
                 <!-- v-show adds display:none -->
                 <p v-show="onSale">On Sale</p>
-
                 <!-- conditional rendering -->
                 <p v-if="qty>10">In Stock</p>
                 <p v-else-if="qty>0 && qty<=10">Almost gone</p>
                 <p v-else>Out of Stock</p>
                 <p>Available:{{qty}}</p>
-                <button v-on:click="addToCart(item)">Add To Cart</button>
-                <button @click="removeFromCart(item)" > Remove From Cart</button>
+
+                <!-- class binding -->
+                <button v-on:click="addToCart(item)" :disabled="qty==0" class="button" :class="{disabledButton: qty==0}">Add To Cart</button>
+                <!-- class binding with ternaray operator -->
+                <button @click="removeFromCart(item)" :disabled="cart==0" class="button" :class="cart==0 ? 'disabledButton': '' "> Remove From Cart</button>
             </div>
 
             <div class="product_cart">
@@ -52,7 +65,8 @@
 
     <script src="./main.js"></script>
     <script>
-        mountedApp.item = 'orange'
+        mountedApp.item = 'apple'
+
     </script>
 </body>
 </html>
