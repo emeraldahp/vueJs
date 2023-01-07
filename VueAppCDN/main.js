@@ -4,7 +4,9 @@ const app = Vue.createApp({
     data: function() { 
         return {
             item: "apple",
-            desc: "its a fruit"
+            desc: "its a fruit",
+            image: "./res/apple.jpg",
+            repo: "https://github.com/emeraldahp/vueJs"
         }
     }
 })

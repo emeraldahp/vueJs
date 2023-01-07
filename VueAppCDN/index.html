@@ -5,13 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VueAppCDN</title>
+    <link rel="stylesheet" href="./css/styles.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body>
     
     <div id="app">
+        <!-- AttributeBinding, shorthand : = v-bind: -->
+        <img v-bind:src="image" alt="img">
         <h1>{{item}}</h1>
         <p>Description: {{desc}}</p>
+        <br>
+        <a :href="repo">RepoLink</a>
     </div>
 
     <script src="./main.js"></script>
