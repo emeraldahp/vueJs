@@ -4,6 +4,7 @@ const app = Vue.createApp({
     data: function() { 
         return {
             cart: [],
+            reviews: [],
             premium: true,
             repo: "https://github.com/emeraldahp/vueJs",
         }
@@ -18,7 +19,10 @@ const app = Vue.createApp({
             if(index>-1){
                 this.cart.splice(index,1)
             }
-            console.log(index)
+        },
+        addReview(reviewData){
+           
+            this.reviews.push(reviewData)
         }
 
     }

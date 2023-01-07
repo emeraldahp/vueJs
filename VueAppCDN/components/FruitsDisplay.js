@@ -111,7 +111,6 @@ app.component('fruits-display',{
                         if(this.cart.indexOf(fruit.id)>-1){
                             this.qty+=1;
                             fruit.qty = this.qty
-                            console.log("incomp")
                             this.$emit('decreasecart', fruit.id);
                         }
                     }

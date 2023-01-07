@@ -20,11 +20,18 @@
             </div>
         </div>
         <br>
+        <review-list :reviews="reviews" ></review-list>
+        <br>
+        <!-- only function name for emit event -->
+        <review-form @revdata="addReview"></review-form>
+        <br>
         <a :href="repo">RepoLink</a>
     </div>
 
     <script src="./main.js"></script>
     <script src="./components/FruitsDisplay.js"></script>
+    <script src="./components/ReviewForm.js"></script>
+    <script src="./components/ReviewList.js"></script>
     <script>
         const mountedApp = app.mount('#app')
         mountedApp.item = 'apple'
