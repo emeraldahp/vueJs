@@ -1,4 +1,17 @@
 img{
-    height: 25%;
-    width: 25%;
+    height: 100%;
+    width: 100%;
 }
+
+.products{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.product_image {
+    width: 40%;
+}
+.product_desc {
+    padding-left: 20px;
+}
+

@@ -11,26 +11,41 @@
 <body>
     
     <div id="app">
-        <!-- AttributeBinding, shorthand : = v-bind: -->
-        <img v-bind:src="image" alt="img">
+        <div class="products">
+            <div class="product_image">
+                <!-- AttributeBinding, shorthand : = v-bind: -->
+                <img v-bind:src="image" alt="img">
+            </div>
 
-        <!-- reactivity -->
-        <h1>{{item}}</h1>
-        <p>Description: {{desc}}</p>
+            <div class="product_desc">
+                <!-- reactivity -->
+                <h1>{{item}}</h1>
+                <p>Description: {{desc}}</p>
 
-        <!-- list rendering -->
-        <ul>
-            <li v-for="info in infos">{{info}}</li>
-        </ul>
-        <div v-for="type in types" :key="type.id">{{type.size}}</div>
+                <!-- list rendering -->
+                <ul>
+                    <li v-for="info in infos">{{info}}</li>
+                </ul>
+                <div v-for="type in types" :key="type.id">{{type.size}}</div>
 
-        <!-- v-show adds display:none -->
-        <p v-show="onSale">On Sale</p>
+                <div v-for="fruit in fruits" :key="fruit.id" @mouseover="selectItem(fruit.name)">{{fruit.name}}</div>
 
-        <!-- conditional rendering -->
-        <p v-if="qty>10">In Stock</p>
-        <p v-else-if="qty>0 && qty<=10">Almost gone</p>
-        <p v-else>Out of Stock</p>
+                <!-- v-show adds display:none -->
+                <p v-show="onSale">On Sale</p>
+
+                <!-- conditional rendering -->
+                <p v-if="qty>10">In Stock</p>
+                <p v-else-if="qty>0 && qty<=10">Almost gone</p>
+                <p v-else>Out of Stock</p>
+                <p>Available:{{qty}}</p>
+                <button v-on:click="addToCart(item)">Add To Cart</button>
+                <button @click="removeFromCart(item)" > Remove From Cart</button>
+            </div>
+
+            <div class="product_cart">
+                <button>Cart({{cart}})</button>
+            </div>
+        </div>
         <br>
         <a :href="repo">RepoLink</a>
     </div>
