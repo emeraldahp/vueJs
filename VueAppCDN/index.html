@@ -12,51 +12,8 @@
     
     <div id="app">
         <div class="products">
-            <div class="product_image">
-                <!-- AttributeBinding, shorthand : = v-bind: -->
-                <img v-bind:src="image" alt="img">
-            </div>
-
-            <div class="product_desc">
-                <!-- reactivity -->
-                <!-- styles binding -->
-                <!-- computed properties -->
-                <h1 :style="styles">{{title}}</h1>
-                <p>Description: {{desc}}</p>
-
-                <!-- list rendering -->
-                <ul>
-                    <li v-for="info in infos">{{info}}</li>
-                </ul>
-                <div v-for="type in types" :key="type.id">{{type.size}}</div>
-                
-                <!-- list rendering -->
-                <!-- style binding -->
-                <!-- using index -->
-                <div 
-                    v-for="(fruit, index) in fruits" 
-                    :key="fruit.id" 
-                    @mouseover="selectItem(index)"
-                    class="itemColor"
-                    :style = "{ backgroundColor: fruit.color}"
-                >
-                        {{fruit.name}}
-                </div>
-
-                <!-- v-show adds display:none -->
-                <!-- computed properties -->
-                <p v-show="onSale">{{sale}}</p>
-                <!-- conditional rendering -->
-                <p v-if="qty>10">In Stock</p>
-                <p v-else-if="qty>0 && qty<=10">Almost gone</p>
-                <p v-else>Out of Stock</p>
-                <p>Available:{{qty}}</p>
-
-                <!-- class binding -->
-                <button v-on:click="addToCart(item)" :disabled="qty==0" class="button" :class="{disabledButton: qty==0}">Add To Cart</button>
-                <!-- class binding with ternaray operator -->
-                <button @click="removeFromCart(item)" :disabled="cart==0" class="button" :class="cart==0 ? 'disabledButton': '' "> Remove From Cart</button>
-            </div>
+            <!--  :<name-of-the-prop> = "<name of the data member in parent>" -->
+            <fruits-display :cart="cart" :premium="premium" ></fruits-display>
 
             <div class="product_cart">
                 <button>Cart({{cart}})</button>
@@ -67,10 +24,10 @@
     </div>
 
     <script src="./main.js"></script>
+    <script src="./components/FruitsDisplay.js"></script>
     <script>
         const mountedApp = app.mount('#app')
         mountedApp.item = 'apple'
-
     </script>
 </body>
 </html>
