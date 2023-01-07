@@ -13,7 +13,7 @@
     <div id="app">
         <div class="products">
             <!--  :<name-of-the-prop> = "<name of the data member in parent>" -->
-            <fruits-display :cart="cart" :premium="premium" ></fruits-display>
+            <fruits-display :cart="cart" :premium="premium" @increasecart="updateCart(1)" @decreasecart="updateCart(-1)"></fruits-display>
 
             <div class="product_cart">
                 <button>Cart({{cart}})</button>

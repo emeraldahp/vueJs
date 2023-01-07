@@ -93,7 +93,7 @@ app.component('fruits-display',{
 
     methods: {
         addToCart(fruitName) {
-            this.cart+=1;
+            this.$emit('increasecart');
             this.qty-=1;
             this.fruits.forEach(fruit => {
                 if(fruit.name == fruitName){
@@ -103,7 +103,7 @@ app.component('fruits-display',{
         },
         removeFromCart(fruitName) {
             if(this.cart>0){
-                this.cart-=1;
+                this.$emit('decreasecart');
                 this.qty+=1;
                 this.fruits.forEach(fruit => {
                     if(fruit.name == fruitName){

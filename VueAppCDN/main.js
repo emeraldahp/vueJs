@@ -9,7 +9,9 @@ const app = Vue.createApp({
         }
     },
     methods: {
-
+        updateCart(value){
+            this.cart+=value;
+        }
     }
 })
 
